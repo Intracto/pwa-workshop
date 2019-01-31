@@ -1,0 +1,15 @@
+body {
+    color: #5376E6;
+    font-family: 'Roboto','Helvetica','Arial',sans-serif;
+    padding: 20px;
+}
+
+button {
+    font-size: 18px;
+    background-color: #5376E6;
+    color: white;
+    padding: 12px 20px;
+    border: 0;
+    cursor: pointer;
+}
+  
