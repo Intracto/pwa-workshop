@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8">
+    <title>Promises Lab</title>
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Promises Lab</h1>
+    </header>
+
+    <main>
+      <div class="movie-container" id="movie-container">
+        <!-- Movie information added dynamically -->
+      </div>
+
+      <label for="movie">Movie name:</label>
+      <input id="movie" autocomplete="off" type="text"  placeholder="enter movie name">
+      <button id="fetch-movie" type="submit">Fetch Movie</button>
+
+    </main>
+
+    <footer>
+      <a href="https://github.com/google-developer-training/pwa-training-labs">GitHub</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+      const movie = document.getElementById('movie');
+
+      const getImageNameButton = document.getElementById('fetch-movie');
+      getImageNameButton.addEventListener('click', function() {
+        app.getMovie(movie.value);
+      });
+
+      document.getElementById('movie').addEventListener('keypress', function(event) {
+        if (event.which === 13) {
+          event.preventDefault();
+          app.getMovie(movie.value);
+        }
+      });
+
+    </script>
+  </body>
+</html>
