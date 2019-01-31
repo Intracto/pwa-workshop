@@ -1,0 +1,13 @@
+{
+  "name": "service-worker-caching",
+  "version": "1.0.0",
+  "description": "service worker caching demo lab",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.16.4"
+  }
+}
