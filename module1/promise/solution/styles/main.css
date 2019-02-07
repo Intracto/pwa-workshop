@@ -4,7 +4,7 @@ body {
   flex-direction: column;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   height: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 0;
   min-height: 100vh;
   text-align: center;
@@ -15,32 +15,20 @@ header {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   color: white;
   margin-bottom: 10px;
+  padding-bottom: 10px;
   width: 100%;
 }
 
 main {
   width: 100%;
-  padding-top: 20%;
-}
-
-label {
-  padding: 5px;
-  text-align: left;
-}
-
-input {
-  border: 1px black solid;
-  font-size: 15px;
-  min-height: 20px;
-  padding: 8px;
 }
 
 button {
-  background-color: #5376E6;
+  background-color: #fff;
   border: none;
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  color: white;
+  color: #5376E6;
   font-size: 16px;
   font-weight: 500;
   height: 36px;
@@ -50,24 +38,24 @@ button {
   padding: 0 10px;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
 }
 
-.movie-container {
-  position: absolute;
-  top: 9vh;
-  left: 50%;
-  transform: translateX(-50%);
+.schedule-container {
+
 }
 
-.movie-container span {
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
+.tv-show-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tv-show {
+  text-align: left;
+  padding: .5em 1em;
+  margin: 1em;
+  background: #efefef;
+  border: #999;
 }
 
 img {
@@ -77,13 +65,4 @@ img {
 a {
   color: white;
   font-weight: bold;
-}
-
-footer {
-  align-items: center;
-  background-color: #5376E6;
-  display: flex;
-  height: 10vh;
-  justify-content: center;
-  width: 100%;
 }

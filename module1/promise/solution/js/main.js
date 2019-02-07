@@ -1,19 +1,19 @@
 const app = (() => {
 
-  function getMovie(query) {
-    const promiseOfMovieInfo = new Promise((resolve, reject) => {
-      fetch(`http://www.omdbapi.com/?apikey=3f1da799&t=${query}`)
+  function getSchedule() {
+    return new Promise((resolve, reject) => {
+      fetch('http://api.tvmaze.com/schedule?country=BE&date=2019-02-07')
 
       .then((response) => {
         if (!response.ok) {
-          throw Error('Bad response for movie request!');
+          throw Error('Bad response for schedule request!');
         }
         return response.json();
       })
 
       .then((result) => {
-        appendPoster(result); // TO DO, SHOW FIRST 5 MOVIES
-        resolve();
+        appendSchedule(result);
+        resolve(result);
       })
 
       .catch((errors) => {
@@ -21,25 +21,25 @@ const app = (() => {
         reject();
       })
     });
-    return promiseOfMovieInfo;
   }
 
-  function appendPoster(movie) {
-    const posterImage = document.createElement('img');
-    posterImage.src = movie.Poster;
+  function appendSchedule(shows) {
+    const showContainer = document.getElementById('tv-show-container');
+    showContainer.innerHTML = '';
 
-    const movieRating = document.createElement('span');
-    movieRating.innerText = "Rating: " + movie.imdbRating;
-
-    const imgContainer = document.getElementById('movie-container');
-    imgContainer.innerHTML = '';
-    imgContainer.appendChild(posterImage);
-    imgContainer.appendChild(movieRating);
-    imgContainer.style.visibility = 'visible';
+    shows.forEach((data) => {
+      showContainer.innerHTML = showContainer.innerHTML + `
+        <div class="tv-show">
+            <h2>${data.show.name} </h2>
+            <h5>${data.airtime}</h5>
+            <img src="${data.show.image.medium}" alt="" />
+        </div>
+      `;
+    });
   }
 
   return {
-    getMovie: (getMovie)
+    getSchedule: (getSchedule)
   };
 
 })();

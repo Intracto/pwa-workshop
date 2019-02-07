@@ -10,40 +10,25 @@
   <body>
     <header>
       <h1>Promises Lab</h1>
+      <button id="fetch-movie" type="submit">Fetch TV Guide</button>
     </header>
 
     <main>
-      <div class="movie-container" id="movie-container">
-        <!-- Movie information added dynamically -->
+      <div class="schedule-container">
+        <h1>TV Gids voor vandaag</h1>
+        <div class="tv-show-wrapper" id="tv-show-container">
+          <!-- Schedule information added dynamically -->
+        </div>
       </div>
-
-      <label for="movie">Movie name:</label>
-      <input id="movie" autocomplete="off" type="text"  placeholder="enter movie name">
-      <button id="fetch-movie" type="submit">Fetch Movie</button>
-
     </main>
-
-    <footer>
-      <a href="https://github.com/google-developer-training/pwa-training-labs">GitHub</a>
-    </footer>
 
     <script src="js/main.js"></script>
 
     <script>
-      const movie = document.getElementById('movie');
-
       const getImageNameButton = document.getElementById('fetch-movie');
       getImageNameButton.addEventListener('click', function() {
-        app.getMovie(movie.value);
+        app.getSchedule();
       });
-
-      document.getElementById('movie').addEventListener('keypress', function(event) {
-        if (event.which === 13) {
-          event.preventDefault();
-          app.getMovie(movie.value);
-        }
-      });
-
     </script>
   </body>
 </html>

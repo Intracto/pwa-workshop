@@ -7,7 +7,7 @@ jsonButton.addEventListener('click', () => {
   // Fetch data from example.json
   fetch('data/example.json')
 
-  // Validate response on OK, otherwise throw error
+  // Validate response OK, otherwise throw error
   .then((response) => {
     if (!response.ok) {
       throw Error(response.statusText);
