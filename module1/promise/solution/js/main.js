@@ -13,34 +13,36 @@ const app = (() => {
 
         .then(result => {
           resolve(result)
-          appendTodos(result)
         })
 
         .catch(errors => {
-          console.log(errors)
-          reject()
+          reject(errors)
         })
     });
   }
 
-  function appendTodos(shows) {
+  function showTodos(todos) {
     const showContainer = document.getElementById('todo-container');
+    let html = '';
     showContainer.innerHTML = '';
 
-    shows.forEach(data => {
+    todos.forEach(data => {
       let checked = data.completed ? '<i class="far fa-check-square"></i>' : '<i class="far fa-square"></i>';
 
-      showContainer.innerHTML = showContainer.innerHTML + `
+      html += `
         <div class="todo">
           ${checked}
           <span>${data.title}</span>
         </div>
       `
     })
+
+    showContainer.innerHTML = html
   }
 
   return {
-    getTodos: (getTodos)
+    getTodos: (getTodos),
+    showTodos: (showTodos)
   }
 
 })()

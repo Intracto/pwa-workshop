@@ -4,7 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta charset="utf-8">
-  <title>Promises Lab</title>
+  <title>My todo's</title>
   <link rel="stylesheet" href="styles/main.css">
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
     integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
@@ -27,10 +27,23 @@
 
   <script>
     document
+      // Get the fetch todos button
       .getElementById('fetch-todos')
+
+      // Add een event listener for click
       .addEventListener('click', () => {
+
+        // Start watching on get todos for resolved (then) and rejected (catch)
         app.getTodos()
-        console.log(app.getTodos())
+          .then(response => {
+            // Show todos on screen
+            app.showTodos(response)
+          })
+          .catch(errors => {
+            // Log errors to console
+            console.log(errors)
+          })
+
       })
   </script>
 </body>
