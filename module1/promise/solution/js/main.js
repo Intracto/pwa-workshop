@@ -1,45 +1,46 @@
 const app = (() => {
 
-  function getSchedule() {
+  function getTodos() {
     return new Promise((resolve, reject) => {
-      fetch('http://api.tvmaze.com/schedule?country=BE&date=2019-02-07')
+      fetch('https://jsonplaceholder.typicode.com/todos')
 
-      .then((response) => {
-        if (!response.ok) {
-          throw Error('Bad response for schedule request!');
-        }
-        return response.json();
-      })
+        .then(response => {
+          if (!response.ok) {
+            throw Error('Bad response for schedule request!')
+          }
+          return response.json()
+        })
 
-      .then((result) => {
-        appendSchedule(result);
-        resolve(result);
-      })
+        .then(result => {
+          resolve(result)
+          appendTodos(result)
+        })
 
-      .catch((errors) => {
-        console.log(errors);
-        reject();
-      })
+        .catch(errors => {
+          console.log(errors)
+          reject()
+        })
     });
   }
 
-  function appendSchedule(shows) {
-    const showContainer = document.getElementById('tv-show-container');
+  function appendTodos(shows) {
+    const showContainer = document.getElementById('todo-container');
     showContainer.innerHTML = '';
 
-    shows.forEach((data) => {
+    shows.forEach(data => {
+      let checked = data.completed ? '<i class="far fa-check-square"></i>' : '<i class="far fa-square"></i>';
+
       showContainer.innerHTML = showContainer.innerHTML + `
-        <div class="tv-show">
-            <h2>${data.show.name} </h2>
-            <h5>${data.airtime}</h5>
-            <img src="${data.show.image.medium}" alt="" />
+        <div class="todo">
+          ${checked}
+          <span>${data.title}</span>
         </div>
-      `;
-    });
+      `
+    })
   }
 
   return {
-    getSchedule: (getSchedule)
-  };
+    getTodos: (getTodos)
+  }
 
-})();
+})()

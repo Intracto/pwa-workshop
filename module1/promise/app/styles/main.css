@@ -31,26 +31,17 @@ button {
   color: #5376E6;
   font-size: 16px;
   font-weight: 500;
-  height: 36px;
+  height: 50px;
   margin: 5px 10px;
-  min-width: 80px;
+  min-width: 120px;
   overflow: hidden;
-  padding: 0 10px;
+  padding: 6px 10px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
 }
 
-.schedule-container {
-
-}
-
-.tv-show-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.tv-show {
+.todo {
   text-align: left;
   padding: .5em 1em;
   margin: 1em;
@@ -58,8 +49,9 @@ button {
   border: #999;
 }
 
-img {
-  max-width: 100%;
+.todo .svg-inline--fa {
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }
 
 a {

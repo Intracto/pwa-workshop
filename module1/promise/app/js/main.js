@@ -1,44 +1,41 @@
 const app = (() => {
 
-  function getSchedule() {
-    // Stap 1: Return de fetch in een promise TODO
-    // Stap 2: Resolve de promise bij success TODO
-    // Stap 3: Reject de promise bij fail TODO
-    fetch('http://api.tvmaze.com/schedule?country=BE&date=2019-02-07')
-
-    .then((response) => {
-      if (!response.ok) {
-        throw Error('Bad response for schedule request!');
-      }
-      return response.json();
-    })
-
-    .then((result) => {
-      appendSchedule(result);
-    })
-
-    .catch((errors) => {
-      console.log(errors);
-    })
+  function getTodos() {
+    // TODO 1: Return a Promise for the fetch
+    // Resolve a success and reject failure
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => {
+        if (!response.ok) {
+          throw Error('Bad response for schedule request!')
+        }
+        return response.json()
+      })
+      .then(result => {
+        appendTodos(result)
+      })
+      .catch(errors => {
+        console.log(errors)
+      })
   }
 
-  function appendSchedule(shows) {
-    const showContainer = document.getElementById('tv-show-container');
+  function appendTodos(shows) {
+    const showContainer = document.getElementById('todo-container');
     showContainer.innerHTML = '';
 
-    shows.forEach((data) => {
+    shows.forEach(data => {
+      let checked = data.completed ? '<i class="far fa-check-square"></i>' : '<i class="far fa-square"></i>';
+
       showContainer.innerHTML = showContainer.innerHTML + `
-        <div class="tv-show">
-            <h2>${data.show.name} </h2>
-            <h5>${data.airtime}</h5>
-            <img src="${data.show.image.medium}" alt="" />
+        <div class="todo">
+          ${checked}
+          <span>${data.title}</span>
         </div>
-      `;
-    });
+      `
+    })
   }
 
   return {
-    getSchedule: (getSchedule)
-  };
+    getTodos: (getTodos)
+  }
 
-})();
+})()

@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <meta charset="utf-8">
-    <title>Promises Lab</title>
-    <link rel="stylesheet" href="styles/main.css">
-  </head>
 
-  <body>
-    <header>
-      <h1>Promises Lab</h1>
-      <button id="fetch-movie" type="submit">Fetch TV Guide</button>
-    </header>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <title>Promises Lab</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+    integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+    crossorigin="anonymous"></script>
+</head>
 
-    <main>
-      <div class="schedule-container">
-        <h1>TV Gids voor vandaag</h1>
-        <div class="tv-show-wrapper" id="tv-show-container">
-          <!-- Schedule information added dynamically -->
-        </div>
-      </div>
-    </main>
+<body>
+  <header>
+    <h1>My Todo's</h1>
+    <button id="fetch-todos" type="submit">Fetch</button>
+  </header>
 
-    <script src="js/main.js"></script>
+  <main class="todos-container">
+    <div id="todo-container">
+      <!-- Content added dynamically -->
+    </div>
+  </main>
 
-    <script>
-      const getImageNameButton = document.getElementById('fetch-movie');
-      getImageNameButton.addEventListener('click', function() {
-        app.getSchedule();
-      });
-    </script>
-  </body>
+  <script src="js/main.js"></script>
+
+  <script>
+    document
+      .getElementById('fetch-todos')
+      .addEventListener('click', () => {
+        app.getTodos()
+        console.log(app.getTodos())
+      })
+  </script>
+</body>
+
 </html>
