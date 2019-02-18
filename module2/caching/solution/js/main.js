@@ -1,49 +1,48 @@
 const app = (() => {
 
-    function getSchedule(date) {
-        if (navigator.onLine) {
-            return new Promise((resolve, reject) => {
-                fetch('http://api.tvmaze.com/schedule?country=BE&date=' + date)
+  function getTodos() {
+    return new Promise((resolve, reject) => {
+      fetch('https://jsonplaceholder.typicode.com/todos')
 
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw Error('Bad response for schedule request!');
-                        }
-                        return response.json();
-                    })
+        .then(response => {
+          if (!response.ok) {
+            throw Error('Bad response for schedule request!')
+          }
+          return response.json()
+        })
 
-                    .then((result) => {
-                        appendSchedule(result);
-                        resolve(result);
-                    })
+        .then(result => {
+          resolve(result)
+        })
 
-                    .catch((errors) => {
-                        console.log(errors);
-                        reject();
-                    })
-            });
-        } else {
-            console.log('hier')
-        }
-    }
+        .catch(errors => {
+          reject(errors)
+        })
+    });
+  }
 
-    function appendSchedule(shows) {
-        const showContainer = document.getElementById('tv-show-container');
-        showContainer.innerHTML = '';
+  function showTodos(todos) {
+    const showContainer = document.getElementById('todo-container');
+    let html = '';
+    showContainer.innerHTML = '';
 
-        shows.forEach((data) => {
-            showContainer.innerHTML = showContainer.innerHTML + `
-        <div class="tv-show">
-            <h2>${data.show.name} </h2>
-            <h5>${data.airtime}</h5>
-            <img src="${data.show.image.medium}" alt="" />
+    todos.forEach(data => {
+      let checked = data.completed ? '<i class="far fa-check-square"></i>' : '<i class="far fa-square"></i>';
+
+      html += `
+        <div class="todo">
+          ${checked}
+          <span>${data.title}</span>
         </div>
-      `;
-        });
-    }
+      `
+    })
 
-    return {
-        getSchedule: (getSchedule)
-    };
+    showContainer.innerHTML = html
+  }
 
-})();
+  return {
+    getTodos: (getTodos),
+    showTodos: (showTodos)
+  }
+
+})()

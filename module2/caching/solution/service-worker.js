@@ -1,5 +1,5 @@
 var cacheName = 'tv-gids-cache-v1';
-var filesToCache = ['/', '/index.html', '/offline.json', '/styles/main.css', '/js/main.js'];
+var filesToCache = ['/', '/index.html', '/styles/main.css', '/js/main.js'];
 
 
 self.addEventListener('install', event => {
@@ -34,7 +34,7 @@ self.addEventListener('activate',e => {
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
     }).catch(function() {
-      return caches.match('/offline.json');
+      console.log('offline')
     })
   ); 
  });
