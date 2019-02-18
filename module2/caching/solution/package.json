@@ -1,7 +1,7 @@
 {
-  "name": "service-worker-caching",
+  "name": "service-worker",
   "version": "1.0.0",
-  "description": "service worker caching demo lab",
+  "description": "service worker demo lab",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
