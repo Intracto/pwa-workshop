@@ -12,4 +12,9 @@ button {
     border: 0;
     cursor: pointer;
 }
+
+#message{
+    color: red;
+    font-weight: bold;
+}
   

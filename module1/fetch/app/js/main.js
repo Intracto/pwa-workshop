@@ -1,31 +1,23 @@
 // Define jsonButton from the DOM
-const jsonButton = document.getElementById('json-btn');
+const jsonButton = document.getElementById('json-btn')
+const htmlMessage = document.getElementById('message')
 
 // Event listener for click to start fetching
 jsonButton.addEventListener('click', () => {
 
-  // 1: Fetch data from example.json [TODO]
-  fetch()
+  // TODO 1: Fetch data from https://jsonplaceholder.typicode.com/todos
+  fetch('')
 
-  // 2: Validate response on OK, otherwise throw error [TODO]
-  .then((response) => {
+    // TODO 2: Validate response on OK, otherwise throw error
+    .then()
 
-  })
+    // TODO 3: Return response as JSON, use .json() function
+    .then()
 
-  // 3: Return response as JSON [TODO]
-  .then((response) => {
+    // TODO 4: Log result to console
+    .then()
 
-  })
-
-  // 4: Log result to console [TODO]
-  .then((result) => {
-
-  })
-
-  // 5: Catch errors and log them [TODO]
-  .catch((error) => {
-
-  });
+    // TODO 5: Catch errors and log to console
+    .catch();
 
 });
-
