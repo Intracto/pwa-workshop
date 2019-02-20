@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta charset="utf-8" />
+    <title>My todo's</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+      integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>My Todo's</h1>
+      <button id="fetch-todos" type="submit">Fetch</button>
+      <button id="a2hs" style="display: none">Add to homescreen</button>
+    </header>
+
+    <main class="todos-container">
+      <div id="todo-container">
+        <!-- Content added dynamically -->
+      </div>
+      <div class="connection"></div>
+    </main>
+
+    <script src="js/main.js"></script>
+
+    <script>
+      // Service Worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          function updateOnlineStatus(event) {
+            var condition = navigator.onLine ? "Live" : "Offline"
+            document.querySelector(".connection").innerHTML = condition
+          }
+
+          window.addEventListener("online", updateOnlineStatus)
+          window.addEventListener("offline", updateOnlineStatus)
+          updateOnlineStatus()
+
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(registration => {
+              console.log("SW registered with scope:", registration.scope)
+            })
+            .catch(err => {
+              console.error("Registration failed:", err)
+            })
+        })
+      }
+
+      // Add to homescreen prompt
+      let deferredPrompt
+      let btnA2HS = document.getElementById("a2hs")
+
+      window.addEventListener("beforeinstallprompt", e => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault()
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e
+      })
+
+      btnA2HS.addEventListener("click", e => {
+        e.target.style.display = "none"
+
+        // Show the prompt
+        deferredPrompt.prompt()
+
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then(choiceResult => {
+          if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the A2HS prompt")
+          } else {
+            console.log("User dismissed the A2HS prompt")
+          }
+          deferredPrompt = null
+        })
+      })
+
+      document.getElementById("fetch-todos").addEventListener("click", () => {
+        // Start watching on get todos for resolved (then) and rejected (catch)
+        app.getTodos()
+          .then(response => {
+            // Show todos on screen
+            app.showTodos(response)
+            // Show add to homescreen after todos
+            btnA2HS.style.display = "inline-block"
+          }).catch(errors => {
+            // Log errors to console
+            console.log(errors)
+          })
+      })
+    </script>
+  </body>
+</html>
