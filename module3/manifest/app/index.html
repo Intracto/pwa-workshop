@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <title>My todo's</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+    integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <h1>My Todo's</h1>
+    <button id="fetch-todos" type="submit">Fetch</button>
+  </header>
+
+  <main class="todos-container">
+    <div id="todo-container">
+      <!-- Content added dynamically -->
+    </div>
+    <div class="connection"></div>
+  </main>
+
+  <script src="js/main.js"></script>
+
+  <script>
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        function updateOnlineStatus(event) {
+          var condition = navigator.onLine ? "Live" : "Offline";
+          document.querySelector('.connection').innerHTML = condition;
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => {
+            console.log('SW registered with scope:', registration.scope);
+          })
+          .catch(err => {
+            console.error('Registration failed:', err);
+          });
+
+      });
+    }
+
+    document
+      // Get the fetch todos button
+      .getElementById('fetch-todos')
+
+      // Add een event listener for click
+      .addEventListener('click', () => {
+
+        // Start watching on get todos for resolved (then) and rejected (catch)
+        app.getTodos()
+          .then(response => {
+            // Show todos on screen
+            app.showTodos(response)
+          })
+          .catch(errors => {
+            // Log errors to console
+            console.log(errors)
+          })
+
+      })
+  </script>
+</body>
+
+</html>
