@@ -1,5 +1,10 @@
-var cacheName = 'tv-gids-cache-v1';
-var filesToCache = ['/', '/index.html', '/styles/main.css', '/js/main.js'];
+var cacheName = 'todo-cache-v1';
+var filesToCache = ['/',
+                    '/index.html',
+                    '/styles/main.css',
+                    '/js/main.js',
+                    'https://use.fontawesome.com/releases/v5.7.2/js/all.js'
+                  ];
 
 
 self.addEventListener('install', event => {

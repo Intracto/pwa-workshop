@@ -1,14 +1,19 @@
 const app = (() => {
 
   function getTodos() {
+    let cacheName = 'todo-cache-v1';
+    let url = 'https://jsonplaceholder.typicode.com/todos';
     return new Promise((resolve, reject) => {
-      fetch('https://jsonplaceholder.typicode.com/todos')
+      fetch(url)
 
         .then(response => {
           if (!response.ok) {
             throw Error('Bad response for schedule request!')
           }
-          return response.json()
+          return caches.open(cacheName).then(cache => {
+              cache.put(url, response.clone());
+              return response.json();
+          })
         })
 
         .then(result => {
