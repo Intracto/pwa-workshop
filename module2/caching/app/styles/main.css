@@ -1,0 +1,73 @@
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  height: 100%;
+  justify-content: flex-start;
+  margin: 0;
+  min-height: 100vh;
+  text-align: center;
+}
+
+header {
+  background-color: #5376E6;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: white;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: #5376E6;
+  font-size: 16px;
+  font-weight: 500;
+  height: 50px;
+  margin: 5px 10px;
+  min-width: 120px;
+  overflow: hidden;
+  padding: 6px 10px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.todo {
+  text-align: left;
+  padding: .5em 1em;
+  margin: 1em;
+  background: #efefef;
+  border: #999;
+}
+
+.todo .svg-inline--fa {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+a {
+  color: white;
+  font-weight: bold;
+}
+
+
+.connection {
+  position: absolute;
+  height: 20px;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  background-color: #efefef;
+  text-align:left;
+  padding-left: 20px;
+  padding-top: 5px;
+}
