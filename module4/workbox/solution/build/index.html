@@ -27,8 +27,7 @@
   <script src="js/main.js"></script>
 
   <script>
-
-      if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           function updateOnlineStatus(event) {
             var condition = navigator.onLine ? "Live" : "Offline";
@@ -39,7 +38,7 @@
           window.addEventListener('offline', updateOnlineStatus);
           updateOnlineStatus();
 
-          navigator.serviceWorker.register('service-worker.js')
+          navigator.serviceWorker.register('sw.js')
           .then(registration => {
             console.log('SW registered with scope:', registration.scope);
           })
