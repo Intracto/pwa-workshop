@@ -1,0 +1,17 @@
+{
+  "name": "service-worker",
+  "version": "1.0.0",
+  "description": "service worker demo lab",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.16.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "web-push": "^3.3.3"
+  }
+}

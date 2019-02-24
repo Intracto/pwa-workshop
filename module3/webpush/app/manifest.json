@@ -1,0 +1,21 @@
+{
+  "short_name": "Todo",
+  "name": "Todo PWA",
+  "icons": [
+    {
+      "src": "/images/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "orientation": "portrait",
+  "background_color": "#5376E6",
+  "display": "standalone",
+  "theme_color": "#5376E6"
+}
