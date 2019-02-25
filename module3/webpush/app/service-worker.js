@@ -42,9 +42,9 @@ self.addEventListener('fetch', event => {
 // Catch the push event, and show the notification
 self.addEventListener("push", e => {
   const data = e.data.json();
-  console.log("Push Recieved...");
-  self.registration.showNotification(data.title, {
-    body: data.body,
-    icon: data.icon
-  });
+  console.log(data);
+
+  // TODO 2: Add function properties to notification
+  // https://developer.mozilla.org/en-US/docs/Web/API/notification
+  self.registration.showNotification();
 });

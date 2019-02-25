@@ -31,10 +31,10 @@ app.post("/subscribe", (req, res) => {
   res.status(201).json({});
 
   // Create payload
-  const payload = JSON.stringify({ 
-    title: "Hello world",
-    body: "Hello there, this is the body text.",
-    icon: "/images/logo-512.png"
+  // TODO 1: Add payload (object with properties)
+  // Check docs on web push notifications
+  const payload = JSON.stringify({
+    // payload goes here
   });
 
   // Pass object into sendNotification

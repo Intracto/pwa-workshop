@@ -25,7 +25,8 @@ async function send() {
 
   // Send Push Notification
   console.log("Sending Push...");
-  await fetch("/subscribe", {
+  // TODO 3: Add the subscribe url to the fetch
+  await fetch("", {
     method: "POST",
     body: JSON.stringify(subscription),
     headers: {
