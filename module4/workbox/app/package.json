@@ -1,0 +1,14 @@
+{
+  "name": "service-worker",
+  "version": "1.0.0",
+  "description": "service worker demo lab",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.16.4",
+    "workbox-cli": "^3.6.3"
+  }
+}
